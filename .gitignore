@@ -1,0 +1,12 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / temp
+*.swp
+*~
+.vscode/
+
+# Dependencies (not used by this static site, but just in case)
+node_modules/

@@ -1,0 +1,109 @@
+/* ============================================================
+   projects.css — Projects Section
+   ============================================================ */
+
+#projects { background: var(--bg-primary); }
+
+/* ── Grid ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Card ── */
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Card Image / Banner ── */
+.project-img {
+  height: 180px;
+  background: linear-gradient(135deg, #1e293b, #273549);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.project-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(56,189,248,.08),
+    rgba(129,140,248,.08));
+}
+
+/* ── Card Body ── */
+.project-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-tags {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.project-tag {
+  font-size: .7rem;
+  font-weight: 600;
+  background: rgba(56,189,248,.1);
+  color: var(--accent);
+  border: 1px solid rgba(56,189,248,.2);
+  padding: .2rem .6rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  color: var(--text-primary);
+}
+
+.project-desc {
+  font-size: .85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 1.2rem;
+}
+
+/* ── Card Links ── */
+.project-links { display: flex; gap: .75rem; }
+.project-link {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  transition: color var(--transition-fast);
+}
+.project-link:hover { color: var(--accent); }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}

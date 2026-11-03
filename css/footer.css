@@ -1,0 +1,366 @@
+/* ============================================================
+   footer.css — Footer + Polish Components
+   (scroll progress bar, back-to-top button, toast, reveal)
+   ============================================================ */
+
+/* ── Footer ── */
+footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+footer a:hover { text-decoration: underline; }
+
+/* ── Scroll Progress Bar ── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  z-index: 200;
+  transition: width .1s linear;
+}
+
+/* ── Back-to-Top Button ── */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 46px; height: 46px;
+  background: var(--accent);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition-base);
+  z-index: 150;
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  opacity: .85;
+  transform: translateY(-3px);
+}
+
+/* ── Toast Notification ── */
+.toast-container {
+  position: fixed;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  color: var(--text-primary);
+  padding: .9rem 1.4rem;
+  border-radius: var(--radius-md);
+  font-size: .875rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-card);
+  min-width: 280px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--transition-base);
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.success { border-left-color: var(--success); }
+.toast.error   { border-left-color: #ef4444; }
+.toast-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* ── Scroll-Reveal Animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger helper — set inline style="--reveal-delay: 0.1s" */
+.reveal[style*="--reveal-delay"] {
+  transition-delay: var(--reveal-delay);
+}
+
+/* ── Form Error State ── */
+.form-input.invalid,
+.form-textarea.invalid {
+  border-color: #ef4444;
+}
+.form-error {
+  font-size: .72rem;
+  color: #ef4444;
+  margin-top: .15rem;
+  min-height: 1em;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .back-to-top { bottom: 1.25rem; right: 1.25rem; width: 42px; height: 42px; }
+  .toast { min-width: auto; width: calc(100vw - 2.5rem); }
+}
+
+/* ============================================================
+   Upgrade Components (avatar photo, rating)
+   ============================================================ */
+
+/* ── Avatar photo (when imageUrl is set) ── */
+.avatar-photo {
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  border: 4px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.avatar-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 700px) {
+  .avatar-photo { width: 220px; height: 220px; }
+}
+
+/* ── Rate This Portfolio ── */
+.rate-portfolio {
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.rate-inner {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.rate-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.rate-stars {
+  display: flex;
+  gap: .4rem;
+}
+.rate-star {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.rate-star:hover { transform: scale(1.15); }
+.rate-star.active { color: #fbbf24; }
+.rate-feedback {
+  font-size: .85rem;
+  color: var(--success);
+  font-weight: 500;
+  min-height: 1.2em;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+.rate-feedback.show { opacity: 1; }
+
+/* ============================================================
+   Theme Toggle + Embedded-Engineer Touches
+   ============================================================ */
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--shadow-accent);
+}
+/* Show the correct icon per theme */
+.theme-icon-sun  { display: none; }
+.theme-icon-moon { display: block; }
+.theme-toggle svg { pointer-events: none; }
+[data-theme="light"] .theme-icon-sun  { display: block; }
+[data-theme="light"] .theme-icon-moon { display: none; }
+
+/* ── Monospace technical accents ──
+   Section tags, skill levels, stats and code-like labels get
+   the mono treatment for an embedded / datasheet feel. */
+.section-tag,
+.skill-badge-level,
+.stat-label,
+.about-stat-label,
+.contact-info-label,
+.hero-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Stat numbers read like register values */
+.stat-number,
+.about-stat-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* The typed role line — terminal prompt style */
+.hero-role {
+  font-family: var(--font-mono) !important;
+  font-weight: 500 !important;
+}
+.hero-role::before {
+  content: '> ';
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* ── Subtle PCB grid background on hero ── */
+#home {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Skill bars look like signal level meters ── */
+.skill-bar-fill {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+/* ── Accent underline on section titles (technical marker) ── */
+.section-title {
+  position: relative;
+}
+
+/* ── Mono tags for project tech stack ── */
+.project-tag {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* ── Code-style nav logo ── */
+.nav-logo {
+  font-family: var(--font-mono);
+}
+.nav-logo span { color: var(--accent); }
+
+/* ── Status badge: blinking like an active process ── */
+.status-badge {
+  font-family: var(--font-mono);
+}
+
+/* Mobile: keep toggle visible in the hamburger menu row */
+@media (max-width: 700px) {
+  .theme-toggle { width: 100%; height: 40px; gap: .5rem; }
+}
+
+/* ============================================================
+   Boot Sequence Overlay
+   ============================================================ */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 1;
+  transition: opacity .55s ease;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.boot-screen.done {
+  opacity: 0;
+  pointer-events: none;
+}
+.boot-terminal {
+  font-family: var(--font-mono);
+  font-size: clamp(.72rem, 2.2vw, .92rem);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  width: 100%;
+  max-width: 560px;
+  white-space: pre-wrap;
+}
+.boot-line {
+  opacity: 0;
+  animation: bootLineIn .15s ease forwards;
+}
+@keyframes bootLineIn {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.boot-line .ok  { color: var(--accent); font-weight: 600; }
+.boot-line .hl  { color: var(--accent2); font-weight: 600; }
+
+/* Blinking cursor on the last line */
+.boot-terminal::after {
+  content: '_';
+  color: var(--accent);
+  animation: blink .8s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-screen { display: none; }
+}

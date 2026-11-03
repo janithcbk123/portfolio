@@ -1,92 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Janith Bandara — Firmware & Embedded Systems Engineer</title>
-  <meta name="description" content="Firmware & Embedded Systems Engineer specializing in AI, IoT, and full-stack development." />
+
+  <!-- ── SEO / Meta ── -->
+  <title>Janith Bandara — Embedded Systems Engineer</title>
+  <meta name="description" content="Embedded systems & firmware engineer — firmware, hardware security, and manufacturing automation, with a background in building and industrial automation." />
+  <meta name="keywords" content="Embedded Systems, Firmware, ESP32, BLE, Hardware Security, Manufacturing Automation, PLC, SCADA, BMS, IoT" />
   <meta name="author" content="Janith Bandara" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Janith Bandara — Embedded Systems Engineer" />
+  <meta property="og:description" content="Embedded systems & firmware engineer — firmware, hardware security, and manufacturing automation." />
+  <meta property="og:image" content="assets/og-image.png" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Janith Bandara — Embedded Systems Engineer" />
+  <meta name="twitter:description" content="Embedded systems & firmware engineer — firmware, hardware security, and manufacturing automation." />
+
+  <!-- ── Favicon (inline SVG — accent dot) ── -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23f5f5f7'/><text x='50' y='70' font-size='58' font-family='sans-serif' font-weight='bold' fill='%230071e3' text-anchor='middle'>J</text></svg>" />
+
+  <!-- ── Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ── Styles (modular) ── -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/badges.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
 </head>
-
 <body>
-    <!-- NAV -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <a href="#home" class="nav-logo">JB<span class="dot">.</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#contact" class="nav-cta">Hire Me</a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+
+  <!-- ══════════ BOOT SEQUENCE ══════════ -->
+  <div class="boot-screen" id="boot-screen">
+    <div class="boot-terminal" id="boot-terminal"></div>
+  </div>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- ══════════ NAV ══════════ -->
+  <nav id="nav">
+    <a href="#home" class="nav-logo">JCB</a>
+    <ul class="nav-links" id="navLinks">
+      <li></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#badges">Badges</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </li>
+      <li><a href="cv.html" class="btn-cv" id="cv-btn" target="_blank" rel="noopener">Download CV</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-label" id="hero-availability">Available for work</div>
+        <h1 class="hero-name" id="hero-name">Janith Bandara,</h1>
+        <div class="hero-role">
+          <span id="typed-text">EMBEDDED SYSTEMS ENGINEER</span><span class="cursor"></span>
+        </div>
+        <p class="hero-desc" id="hero-tagline">Specializing in integrating AI and IoT systems with expertise in database management.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12l10 10 10-10M12 2v20"/></svg>
+            View Projects
+          </a>
+          <a href="#contact" class="btn-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
+            Contact Me
+          </a>
+        </div>
+        <div class="hero-socials" id="hero-socials"></div>
+        <div class="hero-stats" id="hero-stats"></div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-avatar-wrap">
+          <div class="hero-avatar-ring"></div>
+          <div class="avatar-placeholder" id="hero-avatar">JC</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll down</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-tag reveal">About Me</div>
+      <h2 class="section-title reveal">Who I Am</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div id="about-paragraphs"></div>
+          <div class="about-meta">
+            <div class="about-meta-item"><span>📍</span><span id="about-location">Colombo, Sri Lanka</span></div>
+          </div>
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            Embedded systems &amp; firmware
+          </div>
+          <div class="hobbies-title">When I'm not coding:</div>
+          <div class="hobbies" id="about-hobbies"></div>
+          <div style="margin-top:2rem;">
+            <a href="cv.html" class="btn-outline" style="width:fit-content;display:inline-flex;" target="_blank" rel="noopener">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Resume
+            </a>
+          </div>
+        </div>
+        <div class="reveal" style="--reveal-delay:.15s">
+          <div class="about-stats" id="about-stats"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SKILLS ══════════ -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-tag reveal">Technical Skills</div>
+      <h2 class="section-title reveal">Skills &amp; Technologies</h2>
+      <p class="section-desc reveal">A comprehensive overview of my technical expertise across different domains of software development.</p>
+      <div class="skills-tabs reveal" id="skills-tabs"></div>
+      <div class="reveal" id="skills-panels"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ BADGES ══════════ -->
+  <section id="badges">
+    <div class="section-inner">
+      <div class="section-tag reveal">Certifications</div>
+      <h2 class="section-title reveal">Verified Badges</h2>
+      <p class="section-desc reveal">Credentials and certifications verified through Credly.</p>
+      <div class="badges-grid reveal" id="badges-grid"></div>
+      <div class="reveal" id="badges-cta" style="margin-top:2rem;"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ PROJECTS ══════════ -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-tag reveal">My Work</div>
+      <h2 class="section-title reveal">Projects</h2>
+      <p class="section-desc reveal">A selection of projects showcasing my skills across frontend, backend, AI, and IoT development.</p>
+      <div class="projects-grid" id="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-tag reveal">Get in Touch</div>
+      <h2 class="section-title reveal">Let's Connect</h2>
+      <p class="section-desc reveal">I'm always interested in new opportunities, interesting projects, and creative collaborations. Feel free to reach out!</p>
+
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="contact-info-items" id="contact-info"></div>
+          <div class="social-links-title">Follow Me</div>
+          <div class="social-links" id="contact-socials"></div>
+        </div>
+
+        <div class="reveal" style="--reveal-delay:.15s">
+          <div class="form-heading">Send a Message</div>
+          <div class="contact-form" id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="cf-name">Name <span>*</span></label>
+                <input type="text" class="form-input" id="cf-name" placeholder="Your name" />
+                <div class="form-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cf-email">Email <span>*</span></label>
+                <input type="email" class="form-input" id="cf-email" placeholder="your@email.com" />
+                <div class="form-error"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-subject">Subject <span>*</span></label>
+              <input type="text" class="form-input" id="cf-subject" placeholder="What's this about?" />
+              <div class="form-error"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-message">Message <span>*</span></label>
+              <textarea class="form-textarea" id="cf-message" placeholder="Your message here..."></textarea>
+              <div class="form-error"></div>
+            </div>
+            <button class="btn-send" id="cf-submit" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
             </button>
+          </div>
         </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#research">Research</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section id="home" class="hero">
-        <div class="container">
-        </div>
-    </section>
+  <!-- ══════════ RATE PORTFOLIO ══════════ -->
+  <div class="rate-portfolio" id="rate-portfolio">
+    <div class="rate-inner">
+      <div class="rate-title">Rate This Portfolio</div>
+      <div class="rate-stars" id="rate-stars" role="radiogroup" aria-label="Rate this portfolio from 1 to 5 stars">
+        <button class="rate-star" data-value="1" aria-label="1 star" type="button">★</button>
+        <button class="rate-star" data-value="2" aria-label="2 stars" type="button">★</button>
+        <button class="rate-star" data-value="3" aria-label="3 stars" type="button">★</button>
+        <button class="rate-star" data-value="4" aria-label="4 stars" type="button">★</button>
+        <button class="rate-star" data-value="5" aria-label="5 stars" type="button">★</button>
+      </div>
+      <div class="rate-feedback" id="rate-feedback"></div>
+    </div>
+  </div>
 
-    <!-- ABOUT -->
-    <section id="about" class="about">
-        <div class="container">
-        </div>
-    </section>
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <p>© <span id="year">2025</span> Janith Bandara. All rights reserved. &nbsp;·&nbsp; Built with HTML, CSS &amp; vanilla JS</p>
+  </footer>
 
-    <!-- SKILLS -->
-    <section id="skills" class="skills">
-        <div class="container">
-        </div>
-    </section>
+  <!-- Back-to-top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
-    <!-- RESEARCH -->
-    <section id="research" class="research">
-        <div class="container">
-        </div>
-    </section>
+  <!-- Toast container -->
+  <div class="toast-container" id="toast-container"></div>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="projects">
-        <div class="container">
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-        <div class="container">
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-        <div class="footer-inner">
-            <span class="footer-logo">JB<span class="dot">.</span></span>
-            <span class="footer-copy">© 2026 Janith Bandara. All rights reserved.</span>
-            <span class="footer-built">Built with HTML · CSS · JS</span>
-        </div>
-        </div>
-    </footer>
-
-    <script src="main.js"></script>
+  <!-- ── Scripts (order matters: data first) ── -->
+  <script src="js/data.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/boot.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/typing.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/rating.js"></script>
+  <script src="js/animations.js"></script>
 </body>
 </html>
