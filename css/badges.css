@@ -1,0 +1,42 @@
+/* ============================================================
+   badges.css — Credly Certifications Section (official embed)
+   ============================================================ */
+
+#badges { background: var(--bg-primary); }
+
+/* Grid lays out Credly's embedded badge iframes */
+.badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* Each embed slot — Credly injects an <iframe> in here */
+.badge-embed {
+  min-width: 150px;
+  min-height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subtle placeholder while Credly's script loads the iframe */
+.badge-embed:empty::before {
+  content: 'Loading badge…';
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--text-muted);
+}
+
+/* Credly iframes sit on a white card so they read well in dark mode */
+.badge-embed iframe {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .badges-grid { gap: 1rem; justify-content: center; }
+}

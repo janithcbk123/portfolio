@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janith Bandara — CV</title>
+  <meta name="description" content="CV — Janith Bandara, Embedded Systems Engineer." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent: #0071e3;
+      --ink: #1d1d1f;
+      --muted: #52525b;
+      --line: #e2e2e7;
+      --chip: #f2f4f8;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      color: var(--ink);
+      background: #f5f5f7;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* The printable sheet */
+    .sheet {
+      max-width: 820px;
+      margin: 24px auto;
+      background: #fff;
+      padding: 44px 48px;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.08);
+    }
+
+    /* Toolbar (screen only) */
+    .toolbar {
+      max-width: 820px;
+      margin: 20px auto 0;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      padding: 0 8px;
+    }
+    .toolbar a, .toolbar button {
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toolbar .print { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    header.cv-head { border-bottom: 2px solid var(--ink); padding-bottom: 16px; margin-bottom: 20px; }
+    .cv-name { font-size: 30px; font-weight: 800; letter-spacing: -.5px; margin: 0; }
+    .cv-title {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin: 6px 0 12px;
+    }
+    .cv-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .cv-contact a { color: var(--muted); text-decoration: none; }
+    .cv-contact a:hover { color: var(--accent); }
+
+    section { margin-bottom: 20px; }
+    h2.sec {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+      margin: 0 0 11px;
+    }
+
+    p.summary { margin: 0; color: #2b2b30; }
+
+    .exp { margin-bottom: 13px; }
+    .exp:last-child { margin-bottom: 0; }
+    .exp-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .exp-role { font-weight: 700; font-size: 14.5px; }
+    .exp-period { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+    ul.points { margin: 6px 0 0; padding-left: 18px; }
+    ul.points li { margin-bottom: 3px; color: #2b2b30; }
+
+    .skill-group { margin-bottom: 8px; }
+    .skill-label { font-weight: 700; font-size: 12.5px; display: inline; }
+    .skill-vals { color: var(--muted); font-size: 12.5px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: var(--chip);
+      border: 1px solid var(--line);
+      color: #3a3a40;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    .proj { margin-bottom: 10px; }
+    .proj-title { font-weight: 700; font-size: 13.5px; }
+    .proj-desc { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      border-left: 3px solid var(--accent);
+      padding: 6px 0 6px 12px;
+      background: #fafbfd;
+    }
+
+    a.inline { color: var(--accent); text-decoration: none; }
+    a.inline:hover { text-decoration: underline; }
+
+    /* ── Print / PDF ── */
+    @page { size: A4; margin: 14mm; }
+    @media print {
+      body { background: #fff; font-size: 11.5px; }
+      .toolbar { display: none; }
+      .sheet { box-shadow: none; margin: 0; padding: 0; max-width: none; border-radius: 0; }
+      a { color: inherit; }
+      section { margin-bottom: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <a href="index.html">← Back to portfolio</a>
+    <button class="print" onclick="window.print()">⭳ Save as PDF / Print</button>
+  </div>
+
+  <main class="sheet">
+    <header class="cv-head">
+      <h1 class="cv-name">Janith Bandara</h1>
+      <div class="cv-title">Embedded Systems Engineer · Firmware · Manufacturing Automation</div>
+      <div class="cv-contact">
+        <span>📍 Colombo, Sri Lanka</span>
+        <a href="tel:+94728710636">📞 +94 72 871 0636</a>
+        <a href="mailto:janith.cv@proton.me">✉ janith.cv@proton.me</a>
+        <a href="https://github.com/janithcbk123" target="_blank" rel="noopener">github.com/janithcbk123</a>
+        <a href="https://www.linkedin.com/in/janith-c/" target="_blank" rel="noopener">linkedin.com/in/janith-c</a>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="sec">Summary</h2>
+      <p class="summary">
+        Embedded systems and firmware engineer working across the full product stack — from
+        low-level firmware and hardware security through to manufacturing automation and
+        production bring-up. Firmware for connected IoT devices (ESP32 / ESP-AT, BLE, OTA,
+        TLS-secured communication, ATECC608C hardware security), plus the manufacturing side
+        of the story: automated flashing stations, production jig supervisors, and SBC/Linux
+        systems. Earlier background in building automation (BMS/HVAC controls) and industrial
+        automation (PLC, HMI, SCADA, motor control).
+      </p>
+    </section>
+
+    <section>
+      <h2 class="sec">Experience</h2>
+
+      <div class="exp">
+        <div class="exp-top">
+          <span class="exp-role">Embedded Systems Engineer — Firmware &amp; Manufacturing</span>
+          <span class="exp-period">2026 – present</span>
+        </div>
+        <ul class="points">
+          <li>Firmware for a battery-powered wireless IoT metering device: hardware-backed security with an ATECC608C crypto IC (ECC key lifecycle, ECDSA signing, Python-side verification) and TLS-secured ESP32-C6 uplink/downlink.</li>
+          <li>Built an automated manufacturing station to provision single-board computers — SD-card / eMMC flashing with an Nginx-based operator UI, a per-unit jig supervisor, and automated image-quality checks — validated across production batches of 300+ units.</li>
+          <li>Automated device provisioning end-to-end (registration, WireGuard VPN, Docker Compose, binary updates, secure key transfer) into a single script across manufacturing stations.</li>
+          <li>Hardware bring-up on Raspberry Pi Compute Module 4: USB-audio and RTSP IP-camera validation, plus wiring, diagnostics, and recovery documentation.</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-top">
+          <span class="exp-role">Building Automation / BMS Engineer</span>
+          <span class="exp-period">2025</span>
+        </div>
+        <ul class="points">
+          <li>Commissioning, programming, and troubleshooting of BMS/HVAC systems across commercial and industrial sites using Delta Controls (enteliWEB, enteliVAULT, ORCAview).</li>
+          <li>Developed AHU/FCU/VAV control programs and graphics; tuned PID loops and VSD/valve control; integrated energy meters and power analysers over Modbus/BACnet.</li>
+          <li>Investigated utility-data discrepancies down to the database level to restore accurate energy reporting.</li>
+        </ul>
+      </div>
+
+      <div class="exp">
+        <div class="exp-top">
+          <span class="exp-role">Industrial Automation (Training)</span>
+          <span class="exp-period">Earlier</span>
+        </div>
+        <ul class="points">
+          <li>Hands-on PLC programming on Rockwell (Allen-Bradley) and Siemens platforms, with HMI configuration and communication.</li>
+          <li>SCADA systems (WinCC, Ignition), VFD / motor-control technologies, and robotics maintenance and troubleshooting.</li>
+          <li>Process-development and safety-improvement projects within a manufacturing plant environment.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">Core Skills</h2>
+      <div class="skill-group"><span class="skill-label">Embedded Firmware:</span> <span class="skill-vals">Embedded C/C++, ESP32 / ESP32-C6 (ESP-AT), Nordic nRF, Arduino, BLE (provisioning/OTA), FreeRTOS / bare-metal, I2C / SPI / UART, peripheral &amp; LED drivers</span></div>
+      <div class="skill-group"><span class="skill-label">Hardware Security &amp; Comms:</span> <span class="skill-vals">ATECC608C (ECC), ECDSA signing/verification, TLS / mutual TLS, secure key provisioning, certificate management, Python (crypto verification)</span></div>
+      <div class="skill-group"><span class="skill-label">Manufacturing Automation:</span> <span class="skill-vals">SD-card &amp; eMMC flashing systems, production jig supervision, batch production &amp; V&amp;V, image-quality checks, work instructions</span></div>
+      <div class="skill-group"><span class="skill-label">SBC &amp; Linux / DevOps:</span> <span class="skill-vals">Orange Pi 5 Pro, Raspberry Pi / CM4, custom Armbian builds, systemd / Nginx, Docker Compose, WireGuard VPN, RTSP / IP camera</span></div>
+      <div class="skill-group"><span class="skill-label">Building Automation (BMS):</span> <span class="skill-vals">Delta enteliWEB / enteliVAULT / ORCAview, AHU/FCU/VAV, chillers / CHW / VSD, PID tuning &amp; commissioning, Modbus / BACnet / M-Bus / MS-TP, energy metering</span></div>
+      <div class="skill-group"><span class="skill-label">Industrial Automation:</span> <span class="skill-vals">PLC (Rockwell Allen-Bradley, Siemens), HMI, SCADA (WinCC, Ignition), VFD / motor control, robotics maintenance</span></div>
+    </section>
+
+    <section>
+      <h2 class="sec">Selected Projects</h2>
+      <div class="proj">
+        <div class="proj-title">Secure Wireless Utility Meter</div>
+        <div class="proj-desc">Embedded firmware with ATECC608C hardware security and TLS-secured ESP32-C6 communication, plus power-consumption and battery-life characterization. <span class="chips" style="display:inline-flex;"><span class="chip">Embedded C</span><span class="chip">ESP32-C6</span><span class="chip">ATECC608C</span><span class="chip">TLS</span></span></div>
+      </div>
+      <div class="proj">
+        <div class="proj-title">SBC Manufacturing Flashing Station</div>
+        <div class="proj-desc">Automated SD-card / eMMC provisioning station with an operator UI, jig supervisor, and image-quality checks — validated across 300+ production units. <span class="chips" style="display:inline-flex;"><span class="chip">Linux</span><span class="chip">Orange Pi 5 Pro</span><span class="chip">Nginx</span><span class="chip">Automation</span></span></div>
+      </div>
+      <div class="proj">
+        <div class="proj-title">Service-Stack Provisioning Automation</div>
+        <div class="proj-desc">Single-script pipeline automating device registration, WireGuard VPN, Docker Compose deployment, and binary updates with secure key transfer. <span class="chips" style="display:inline-flex;"><span class="chip">Bash</span><span class="chip">Docker</span><span class="chip">WireGuard</span><span class="chip">DevOps</span></span></div>
+      </div>
+      <div class="proj">
+        <div class="proj-title">BMS Energy &amp; HVAC Integration</div>
+        <div class="proj-desc">AHU/FCU/VAV control and graphics in Delta Controls, PID/VSD tuning, and Modbus/BACnet integration of energy meters and power analysers. <span class="chips" style="display:inline-flex;"><span class="chip">Delta Controls</span><span class="chip">BACnet</span><span class="chip">Modbus</span><span class="chip">PID</span></span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">Certifications</h2>
+      <p class="summary" style="font-size:12.5px;">
+        Verified credentials available on Credly —
+        <a class="inline" href="https://www.credly.com/users/janith-kehelwatta" target="_blank" rel="noopener">credly.com/users/janith-kehelwatta</a>.
+      </p>
+    </section>
+
+    <section style="margin-bottom:0;">
+      <div class="note">
+        Detailed work history, employer references, and a full project portfolio are available on request —
+        feel free to <a class="inline" href="mailto:janith.cv@proton.me">get in touch</a>.
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
